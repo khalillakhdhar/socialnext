@@ -26,7 +26,14 @@ if (req.method === 'POST') {
 }
 if (req.method === 'GET') {
     try {
-        const users = await prisma.user.findMany();
+        const users = await prisma.user.findMany(
+            {
+                include:{
+                    publications:true,
+                    adresses:true
+                }
+            }
+        );
         return res.status(200).json(users);
     } catch (error) {
         return res.status(400).json({ message: 'Something went wrong' });
