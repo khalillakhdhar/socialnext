@@ -29,4 +29,12 @@ const nvadresse=await prisma.adresse.create({
 
 
 }
+if(req.method==='GET'){
+    const adresse=await prisma.adresse.findMany({
+        include:{
+            user:true
+        }
+    })
+    return res.status(200).json(adresse)
+}
 }
