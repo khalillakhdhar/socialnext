@@ -48,4 +48,7 @@ if (req.method === 'DELETE') {
         return res.status(400).json({ message: 'Something went wrong' });
     }
 }
+// find user by email
+
+
 }

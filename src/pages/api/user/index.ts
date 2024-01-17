@@ -39,4 +39,19 @@ if (req.method === 'GET') {
         return res.status(400).json({ message: 'Something went wrong' });
     }
 }
+
+// find user by email
+if (req.method === 'PUT') {
+    const { email } = req.body;
+    try {
+        const user = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        });
+        return res.status(200).json(user);
+    } catch (error) {
+        return res.status(400).json({ message: 'Something went wrong' });
+    }
+}
 }

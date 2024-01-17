@@ -14,7 +14,9 @@ if(req.method==='POST'){
         })
         if(user && bcrypt.compareSync(mdp,user.mdp)){
             const token=jwt.sign({id:user.id},process.env.JWT_SECRET,{expiresIn:"1h"})
-            return res.status(200).json({token})
+            const id=user.id;
+            //return res.status(200).json({token})
+            return res.status(200).json({token,id})
         }
         else{
             return res.status(400).json({message:"email or password incorrect"})
