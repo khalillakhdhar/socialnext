@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
 import axios from "axios";
 import { useState} from "react";
+import jwt from "jsonwebtoken";
 // authentification with email mdp variables
 
 const Auth: React.FC = () => {
@@ -19,6 +20,8 @@ try
     if (response.data.token) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userid", JSON.stringify(response.data.id));
+        const decodedToken = jwt.decode(response.data.token);
+        console.log(decodedToken.id);
         // redirect to home page
        // window.location.href = "/";
        alert("bienvenu")
