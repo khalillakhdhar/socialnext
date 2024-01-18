@@ -21,12 +21,18 @@ const nvpublication=await prisma.publication.create({
     }
 })
 }
-if(req.method==='GET'){
-    const publication=await prisma.publication.findMany({
-        include:{
-            publieur:true
+if(req.method === 'GET'){
+    const publication = await prisma.publication.findMany({
+        include: {
+            publieur: true,
+            commentaires: {
+                include: {
+                    publieur: true  
+                }
+            }        
         }
-    })
-    return res.status(200).json(publication)
+    });
+    return res.status(200).json(publication);
 }
+
 }

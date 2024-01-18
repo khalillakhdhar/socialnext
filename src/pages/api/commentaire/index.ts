@@ -36,7 +36,10 @@ if(req.method==='POST'){
 if(req.method==='GET'){
     const commentaires=await prisma.commentaire.findMany({
         include:{
-            publieur:true
+            publieur:true,
+            publication:true
+
+
         }
     })
     return res.status(200).json(commentaires)
