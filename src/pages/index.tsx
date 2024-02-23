@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState} from "react";
 import jwt from "jsonwebtoken";
 import { Button } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // authentification with email mdp variables
 
@@ -26,8 +27,9 @@ const Auth: React.FC = () => {
                 console.log(decodedToken.id);
                 
                 // redirect to home page
-                // window.location.href = "/";
-                alert("bienvenu");
+                 window.location.href = "/publication";
+                //alert("bienvenu");
+
             } else {
                 alert("login ou mot de passe incorrects");
             }
@@ -37,12 +39,13 @@ const Auth: React.FC = () => {
     };
     
     return (
-        <div>
+        <div className="text-center">
             <h1>Authentification</h1>
-            Email:<input type="text" placeholder="email" onChange={(e) => setEmail(e.target.value)} /><br></br>
-            Mot de passe<input type="password" placeholder="mdp" onChange={(e) => setMdp(e.target.value)} /><br></br>
+            Email:<input type="text" placeholder="email" onChange={(e) => setEmail(e.target.value)} className="form-control" /><br></br>
+            Mot de passe<input type="password" placeholder="mdp" onChange={(e) => setMdp(e.target.value)} className="form-control" /><br></br>
             <Button onClick={authentification}>Se connecter</Button>
             {/* lien vers inscripion*/}
+            <br></br>
             <a href="/inscription">Inscription</a>
         </div>
     );

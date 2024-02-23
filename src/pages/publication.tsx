@@ -28,6 +28,7 @@ export default function Publication() {
             });
             setText('');
             getPublications();
+            window.location.reload();
         } catch (error) {
             console.error(error);
         }
@@ -48,6 +49,7 @@ export default function Publication() {
             });
             setCommentaireTexts({ ...commentaireTexts, [publicationId]: '' });
             getPublications();
+            window.location.reload();
         } catch (error) {
             console.error(error);
         }
@@ -79,7 +81,7 @@ export default function Publication() {
                         <div className="card mb-4" key={publication.id}>
                             <div className="card-body">
                                 <h5 className="card-title">{publication.publieur.nom} {publication.publieur.prenom}</h5>
-                                <p className="card-text">{publication.text}</p>
+                                <p className="card-text">{publication.text} / {publication.date}</p>
                                 {/* Affichage et ajout de commentaires */}
                                 <div className="mt-4">
                                     <h6>Commentaires:</h6>

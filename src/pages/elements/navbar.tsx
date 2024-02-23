@@ -1,6 +1,12 @@
 import React from 'react'
 
 export default function navbar() {
+  // disconnect arrow function
+  const disconnect = () => {
+    localStorage.removeItem("token");
+    // localstorage.clear();
+    window.location.href = "/";
+  };
   return (
     <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
       <div className="container-fluid">
@@ -18,7 +24,7 @@ export default function navbar() {
             </li>
            
             <li className="nav-item">
-              <a className="nav-link " >déconnexion</a>
+              <a  className="nav-link" onClick={disconnect} >déconnexion</a>
             </li>
           </ul>
         

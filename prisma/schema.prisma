@@ -37,6 +37,10 @@ model Publication {
   publieurId  Int
   publieur    User         @relation(fields: [publieurId], references: [id])
   commentaires Commentaire[]
+  // date avec date heure par defaut
+  date        DateTime     @default(now())
+
+
 }
 
 // models/Commentaire.model.js
@@ -47,6 +51,7 @@ model Commentaire {
   publieur     User       @relation(fields: [publieurId], references: [id])
   publicationId Int
   publication  Publication @relation(fields: [publicationId], references: [id])
+  date        DateTime     @default(now())
 }
 
 // models/Groupe.model.js
