@@ -15,12 +15,12 @@ if (req.method === 'POST') {
                 prenom,
                 email,
                 mdp: hash,
-                age
+                age:parseInt(age)
             }
         });
         return res.status(200).json(user);
     } catch (error) {
-        return res.status(400).json({ message: 'Something went wrong' });
+        return res.status(400).json({ message: 'Something went wrong'+error });
     }
 
 }
