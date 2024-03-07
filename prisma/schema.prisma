@@ -20,14 +20,14 @@ model User {
 
 // models/Adresse.model.js
 model Adresse {
-  id        Int       @id @default(autoincrement())
-  pays      String
-  ville     String
-  codeposte String
-  rue       String
-  numero    String
-  userId    Int
-  user      User      @relation(fields: [userId], references: [id])
+    id        Int       @id @default(autoincrement())
+    pays      String
+    ville     String
+    codeposte String
+    rue       String
+    numero    String
+    userId    Int
+    user      User      @relation(fields: [userId], references: [id])
 }
 
 // models/Publication.model.js
