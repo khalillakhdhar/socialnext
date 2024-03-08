@@ -48,6 +48,34 @@ if(req.method==='PUT'){
 
 
 }
+// delete a group
+if(req.method==='DELETE'){
+    const {id}=req.query;
+    const groupe=await prisma.groupe.delete({
+        where:{
+            id:Number(id)
+        }
+    })
+    return res.status(200).json(groupe)
+}
+// add membres to a group
+if(req.method==='PUT'){
+    const {id}=req.query;
+    const {userid}=req.body;
+    const groupe=await prisma.groupe.update({
+        where:{
+            id:Number(id)
+        },
+        data:{
+            membres:{
+                connect:{
+                    id:Number(userid)
+                }
+            }
+        }
+    })
+    return res.status(200).json(groupe)
+}
 
 
 }

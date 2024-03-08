@@ -34,5 +34,15 @@ if(req.method === 'GET'){
     });
     return res.status(200).json(publication);
 }
+// supprimer une publication
+if(req.method==='DELETE'){
+    const {id}=req.query;
+    const publication=await prisma.publication.delete({
+        where:{
+            id:Number(id)
+        }
+    })
+    return res.status(200).json(publication)
+}
 
 }
